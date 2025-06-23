@@ -1,4 +1,4 @@
-package com.itheima.jdbc;
+package com.bronya.jdbc;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -18,8 +18,6 @@ public class Connection {
         String sql2="update stu set age= 2000 where id=2";
 
         Statement stmt = conn.createStatement();
-
-
 
         try {
             //开启事务

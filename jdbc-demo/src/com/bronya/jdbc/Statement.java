@@ -1,4 +1,4 @@
-package com.itheima.jdbc;
+package com.bronya.jdbc;
 
 import org.junit.Test;
 import java.sql.Connection;
@@ -13,7 +13,7 @@ public class Statement {
     *@throws Exception
     */
     @Test
-    public void testDML() throws Exception {
+    public void testStatement() throws Exception {
         String url="jdbc:mysql://localhost:3306/db1?useSSL=false";
         String username="root";
         String password="1234";

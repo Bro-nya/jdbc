@@ -1,4 +1,4 @@
-package com.itheima.jdbc;
+package com.bronya.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
