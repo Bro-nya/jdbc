@@ -89,4 +89,70 @@ public class BrandTest {
         pstmt.close();
         conn.close();
     }
+
+    @Test
+    public void BrandUpdate() throws Exception {
+        //模拟接收的数据
+        // 接收页面提交的参数
+        String brandName = "香飘飘";
+        String companyName = "香飘飘";
+        int ordered = 10000;
+        String description = "绕地球三圈";
+        int status = 1;
+
+        int id=4;
+
+        //加载德鲁伊配置文件，并且获取连接池对象，再获取数据库连接
+        Properties prop = new Properties();
+        prop.load(new FileInputStream("D:\\juan\\mycode\\jdbc\\jdbc-demo\\src\\druid.properties"));
+        DataSource dataSource = DruidDataSourceFactory.createDataSource(prop);
+        Connection conn = dataSource.getConnection();
+        //定义sql
+        String sql = "update tb_brand set brand_name=?,company_name=?,ordered=?,description=?,status=? where id=?";
+        //获取pstms对象
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        //设置？参数
+        pstmt.setString(1, brandName);
+        pstmt.setString(2, companyName);
+        pstmt.setInt(3, ordered);
+        pstmt.setString(4, description);
+        pstmt.setInt(5, status);
+        pstmt.setInt(6, id);
+
+        //执行sql
+        int count = pstmt.executeUpdate();//返回受影响的行数
+        //执行结果
+        System.out.println(count>0);
+
+        pstmt.close();
+        conn.close();
+    }
+
+    @Test
+    public void BrandDelete() throws Exception {
+        //模拟接收的数据
+        // 接收页面提交的参数
+
+        int id=4;
+
+        //加载德鲁伊配置文件，并且获取连接池对象，再获取数据库连接
+        Properties prop = new Properties();
+        prop.load(new FileInputStream("D:\\juan\\mycode\\jdbc\\jdbc-demo\\src\\druid.properties"));
+        DataSource dataSource = DruidDataSourceFactory.createDataSource(prop);
+        Connection conn = dataSource.getConnection();
+        //定义sql
+        String sql = "delete from tb_brand where id=?";
+        //获取pstms对象
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        //设置？参数
+        pstmt.setInt(1, id);
+
+        //执行sql
+        int count = pstmt.executeUpdate();//返回受影响的行数
+        //执行结果
+        System.out.println(count>0);
+
+        pstmt.close();
+        conn.close();
+    }
 }
